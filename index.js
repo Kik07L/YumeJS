@@ -55,35 +55,35 @@ if (isGlitch) {
         const data = readFileSync(gitIgnorePath, "utf8").toString();
         if (data.includes("dev.env")) {
             writeFileSync(gitIgnorePath, data.replace("\ndev.env", ""));
-            console.info("Removed dev.env from .gitignore");
+            console.info(" dev.env suprimé de .gitignore");
         }
     } catch {
-        console.error("Failed to remove dev.env from .gitignore");
+        console.error("impossible de supprimer dev.env de .gitignore");
     }
 
     try {
-        console.info("[INFO] Trying to re-install modules...");
+        console.info("[INFO] Tentative de réinstalation des modules...");
         npmInstall();
-        console.info("[INFO] Modules successfully re-installed.");
+        console.info("[INFO] les modules ont été réinstallé avec success.");
     } catch (err) {
-        console.info("[INFO] Failed to re-install modules, trying to delete node_modules and re-install...");
+        console.info("[INFO] erreur lors de la réinstalation des modules, essayez de supprimer node_modules et de ré-installer...");
         try {
             npmInstall(true);
-            console.info("[INFO] Modules successfully re-installed.");
+            console.info("[INFO] Les modules ont été réinstallé avec succes .");
         } catch {
-            console.info("[INFO] Failed to re-install modules, trying to delete node_modules and install modules forcefully...");
+            console.info("[INFO] erreur lors de la réinstalation des modules, essayez de supprimer node_modules et d'installer les modules de force...");
             try {
                 npmInstall(true, true);
-                console.info("[INFO] Modules successfully re-installed.");
+                console.info("[INFO] les modules ont été réinstallé avec success.");
             } catch {
-                console.warn("[WARN] Failed to re-install modules, please re-install manually.");
+                console.warn("[WARN] erreur lors de la réinstalation des modules, essayez de les réinstaler manuelement.");
             }
         }
     }
 }
 
 if (isGitHub) {
-    console.warn("[WARN] Running this bot using GitHub is not recommended.");
+    console.warn("[WARN] Demarer ce bot avec GitHub n'est pas recommandé.");
 }
 
 const require = module.createRequire(import.meta.url);
@@ -91,9 +91,9 @@ const require = module.createRequire(import.meta.url);
 try {
     prism.FFmpeg.getInfo(true);
 } catch {
-    console.info("[INFO] Couldn't find FFmpeg/avconv, trying to install ffmpeg-static...");
+    console.info("[INFO]  FFmpeg/avconv est introuvable, yume essaye d'installer ffmpeg-static...");
     npmInstall(false, false, ["--no-save", "ffmpeg-static"]);
-    console.info("[INFO] ffmpeg-static has been installed.");
+    console.info("[INFO] yumé a installé ffmpeg-static :D .");
 }
 
 if (isGlitch || isReplit) {
@@ -102,9 +102,9 @@ if (isGlitch || isReplit) {
         res.end(`OK (200) - ${now}`);
     }).listen(Number(process.env.PORT || 3000) || 3000);
 
-    console.info(`[INFO] ${isGlitch ? "Glitch" : "Replit"} environment detected, trying to compile...`);
+    console.info(`[INFO] ${isGlitch ? "Glitch" : "Replit"} environement détécté, essai de compilation...`);
     execSync(`npm run compile`);
-    console.info("[INFO] Compiled.");
+    console.info("[INFO] Complié avec succes.");
 }
 
 const streamStrategy = process.env.STREAM_STRATEGY;
@@ -113,9 +113,9 @@ if (streamStrategy === "play-dl") {
     try {
         require("play-dl");
     } catch {
-        console.info("[INFO] Installing play-dl...");
+        console.info("[INFO] yume installe play-dl...");
         npmInstall(false, false, ["play-dl"]);
-        console.info("[INFO] Play-dl has been installed.");
+        console.info("[INFO] yume a installé Play-dl !");
     }
 }
 console.info("[INFO] Demarage de Yume...");
