@@ -119,9 +119,9 @@ export class HelpCommand extends BaseCommand {
                     .setCustomId(selection.customId!)
                     .setDisabled(true)
                     .addOptions({
-                        label: "Nothing to select here",
-                        description: "Nothing to select here",
-                        value: "Nothing to select here"
+                        label: "rien a séléctioner ici",
+                        description: "rien a séléctioner ici",
+                        value: "rien a séléctioner ici"
                     });
                 await msg.edit({ components: [new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(disabledMenu)] });
             }
