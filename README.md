@@ -1,8 +1,9 @@
 # Yume Discord Bot Inspired by RAWON
 
 ## Setup
-1. télécharger et installer [Node.js](https://nodejs.org) version `16.6.0` ou supperieur
+1. télécharger et installer [Node.js](https://nodejs.org)
 2. Ouvrez et completez le fichier `.env`
+
 3. installez les dépendences requises et optionels
 ```sh
 $ npm install
